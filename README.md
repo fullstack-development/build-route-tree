@@ -11,13 +11,12 @@ yarn add @fsd/react-build-route-tree
 ## API
 `buildRouteTree({ Object })` - a function that accepts the object of describing your routes tree.
 
-`getRoutePath()` - a function that returns a structured route.
+`getRoutePath('' | { string, boolean })` - a function that returns a structured route, may take params and insert it like .../:params/...
 
-`getRedirectPath('' | { string })` - a function that takes an argument and adds it to a structured.
+`getRedirectPath('' | { string })` - a function that structures the route and redirects it, may take arguments such as uuid, etc.
+
+`getElementKey()` - return a last part of your recourse from routes tree object.
 ## Usage
-```typescript
-import { buildRouteTree } from '@fsd/react-build-route-tree';
-```
 ### Create routes tree object
 ```typescript
 import buildRouteTree, { getParam } from 'shared/helpers/buildRouteTree';
@@ -26,7 +25,7 @@ const rawTree = {
   preview: null,
   home: {
     loans: {
-      uuid: getParam(null), // You can pass params at route
+      uuid: getParam(null), // If you need to pass params at route
     },
     balance: {
       convert: null,
