@@ -1,0 +1,31 @@
+{
+  "name": "@fsd/react-build-route-tree",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "@types/query-string": "^6.1.1",
+    "path-to-regexp": "^2.4.0",
+    "query-string": "^6.2.0",
+    "typescript": "^3.1.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fullstack-development/react-build-route-tree.git"
+  },
+  "keywords": [
+    "react",
+    "router",
+    "route"
+  ],
+  "author": "Fullstack Development",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fullstack-development/react-build-route-tree/issues"
+  },
+  "homepage": "https://github.com/fullstack-development/react-build-route-tree#readme"
+}
