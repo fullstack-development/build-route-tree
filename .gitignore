@@ -45,3 +45,6 @@ static
 
 # Directories for npm
 dist
+
+# MacOS deps
+.DS_Store
