@@ -9,11 +9,11 @@ npm install @fsd/react-build-route-tree --save
 yarn add @fsd/react-build-route-tree
 ```
 ## API
-`buildRouteTree({ Object })` - a function that accepts the object of describing your routes tree.
+`buildRouteTree({ Object })` - a function that accepts the object of describing your routes tree and return an object with route keys.
 
 `getRoutePath('' | { string, boolean })` - a function that returns a structured route, may take params and insert it like .../:params/...
 
-`getRedirectPath('' | { string })` - a function that structures the route and redirects it, may take arguments such as uuid, etc.
+`getRedirectPath('' | { string })` - a function that structures the route and redirects it, may take arguments such as uuid, etc. Returns an object with route keys and your arguments inside.
 
 `getElementKey()` - return a last part of your recourse from routes tree object.
 ## Usage
