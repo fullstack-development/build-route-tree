@@ -1,7 +1,7 @@
-export const paramOptionsSymbol = Symbol.for('isParam');
+export const PARAM_OPTIONS_SYMBOL = Symbol.for('isParam');
 
 export interface IParam {
-  [paramOptionsSymbol]: IParamOptions;
+  [PARAM_OPTIONS_SYMBOL]: IParamOptions;
 }
 
 export interface IParamOptions {
@@ -9,7 +9,7 @@ export interface IParamOptions {
 }
 
 export function isParamGuard(data: any): data is IParam {
-  return !!data && !!data[paramOptionsSymbol];
+  return !!data && !!data[PARAM_OPTIONS_SYMBOL];
 }
 
 export interface IQueryParams {

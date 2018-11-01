@@ -1,5 +1,5 @@
 # react-build-route-tree
-This library helps build a typed route tree for react
+This library helps build a typed route tree
 
 ## Installation
 ```sh
