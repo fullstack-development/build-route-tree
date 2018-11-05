@@ -22,7 +22,9 @@ yarn add @fsd/react-build-route-tree
 
 `getRedirectPath('' | { string })` - a function that structures the route and redirects it, may take arguments such as uuid, etc. Returns an object with route keys and your arguments inside.
 
-`getElementKey()` - return a last part of your recourse from routes tree object.
+`getElementKey()` - return a last part of your resource from routes tree object.
+
+`getParam(null | Object)` - returns the continuation of building the route tree after the parameter if the object is passed.
 ## Usage
 ### Create routes tree object
 ```typescript
