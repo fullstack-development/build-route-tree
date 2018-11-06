@@ -1,0 +1,32 @@
+{
+  "name": "@fsd/build-route-tree",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "dependencies": {
+    "@types/query-string": "^6.1.1",
+    "path-to-regexp": "^2.4.0",
+    "query-string": "^6.2.0"
+  },
+  "devDependencies": {
+    "typescript": "^3.1.4"
+  },
+  "scripts": {
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fullstack-development/build-route-tree.git"
+  },
+  "keywords": [
+    "router",
+    "route"
+  ],
+  "author": "Fullstack Development",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fullstack-development/build-route-tree/issues"
+  },
+  "homepage": "https://github.com/fullstack-development/build-route-tree#readme"
+}

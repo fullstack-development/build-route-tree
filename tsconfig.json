@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "typeRoots": ["./node_modules/@types"],
+    "traceResolution": true,
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "target": "es5",
+    "module": "commonjs",
+    "declaration": true,
+    "baseUrl": "./src",
+    "outDir": "./dist",
+    "lib": ["es2015", "es2017", "es6", "es7", "es5"],
+    "esModuleInterop": true,
+    "strict": true
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}
