@@ -1,19 +1,19 @@
-# react-build-route-tree
+# build-route-tree
 This library helps build a typed route tree
 
 ## Motivation
 This library allows you to create typed route trees with syntax highlighting. This avoids many errors due to the use of strings in paths. Routes become typed and encapsulated so autocompletions appear for them in IDEs.
-### How it was
+### How it looks like without a library
 ```typescript
 <Route path={`${ROUTES_PREFIX}/user/${uuid}/security/2fa`} component={Layout} />
 ```
 Here you need to keep in mind what routes to use or to look at it in another piece of code. You can also make syntax errors when writing this line of code. This library will help you avoid these things.
 ## Installation
 ```sh
-npm install @fsd/react-build-route-tree --save
+npm install @fsd/build-route-tree --save
 ```
 ```sh
-yarn add @fsd/react-build-route-tree
+yarn add @fsd/build-route-tree
 ```
 ## API
 `buildRouteTree({ Object })` - a function that accepts the object of describing your routes tree and return an object with route keys.
@@ -28,7 +28,7 @@ yarn add @fsd/react-build-route-tree
 ## Usage
 ### Create routes tree object
 ```typescript
-import buildRouteTree, { getParam } from 'shared/helpers/buildRouteTree';
+import buildRouteTree, { getParam } from '@fsd/buildRouteTree';
 
 const rawTree = {
   preview: null,

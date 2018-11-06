@@ -1,5 +1,5 @@
 {
-  "name": "@fsd/react-build-route-tree",
+  "name": "@fsd/build-route-tree",
   "version": "0.0.1",
   "description": "",
   "main": "dist/index.js",
@@ -17,17 +17,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fullstack-development/react-build-route-tree.git"
+    "url": "git+https://github.com/fullstack-development/build-route-tree.git"
   },
   "keywords": [
-    "react",
     "router",
     "route"
   ],
   "author": "Fullstack Development",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/fullstack-development/react-build-route-tree/issues"
+    "url": "https://github.com/fullstack-development/build-route-tree/issues"
   },
-  "homepage": "https://github.com/fullstack-development/react-build-route-tree#readme"
+  "homepage": "https://github.com/fullstack-development/build-route-tree#readme"
 }
