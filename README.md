@@ -7,7 +7,7 @@ This library allows you to create typed route trees with syntax highlighting. Th
 ```typescript
 <Route path={`${ROUTES_PREFIX}/user/${uuid}/security/2fa`} component={Layout} />
 ```
-Here you need to keep in mind what routes to use or to look at it in another piece of code. You can also make syntax errors when writing this line of code. This library will help you avoid these things.
+Here you need to keep in mind what routes to use or to look at it in another piece of code. You can also make syntax errors when writing this line of code. This library will help you avoid these things. Go to [usage](#usage) to see an example of our solution
 ## Installation
 ```sh
 npm install @fsd/build-route-tree --save
