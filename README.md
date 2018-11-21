@@ -10,10 +10,10 @@ This library allows you to create typed route trees with syntax highlighting. Th
 Here you need to keep in mind what routes to use or to look at it in another piece of code. You can also make syntax errors when writing this line of code. This library will help you avoid these things. Go to [usage](#usage) to see an example of our solution
 ## Installation
 ```sh
-npm install @fsd/build-route-tree --save
+npm install build-route-tree --save
 ```
 ```sh
-yarn add @fsd/build-route-tree
+yarn add build-route-tree
 ```
 ## API
 `buildRouteTree({ Object })` - a function that accepts the object of describing your routes tree and returns an object with route keys. Builded route tree looks like:
@@ -93,7 +93,7 @@ the constructed object of the route tree has three methods for each route
 ## Usage
 ### Create routes tree object
 ```typescript
-import buildRouteTree, { getParam } from '@fsd/buildRouteTree';
+import buildRouteTree, { getParam } from 'buildRouteTree';
 
 const rawTree = {
   preview: null,              // null in this tree is a point, which means
