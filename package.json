@@ -1,6 +1,6 @@
 {
   "name": "build-route-tree",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "This library helps build a typed route tree",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
