@@ -22,74 +22,73 @@ yarn add build-route-tree
     tree
   </summary>
 
-```js
+```typescript
 {
   preview: {
-    getRoutePath: [Function],
-    getRedirectPath: [Function],
-    getElementKey: [Function: getElementKey]
+    getRoutePath: Function,
+    getRedirectPath: Function,
+    getElementKey: Function,
   },
   home: {
     loans: {
-      uuid: [Object],
-      getRoutePath: [Function],
-      getRedirectPath: [Function],
-      getElementKey: [Function: getElementKey]
+      uuid: Object,
+      getRoutePath: Function,
+      getRedirectPath: Function,
+      getElementKey: Function,
     },
     orders: {
-      opened: [Object],
-      closed: [Object],
-      getRoutePath: [Function],
-      getRedirectPath: [Function],
-      getElementKey: [Function: getElementKey]
+      opened: Object,
+      closed: Object,
+      getRoutePath: Function,
+      getRedirectPath: Function,
+      getElementKey: Function,
     },
     user: {
-      uuid: [Object],
-      getRoutePath: [Function],
-      getRedirectPath: [Function],
-      getElementKey: [Function: getElementKey]
+      uuid: {
+        balances: {
+          getRoutePath: Function,
+          getRedirectPath: Function,
+          getElementKey: Function,
+        },
+        security: {
+          2fa: {
+            getRoutePath: Function,
+            getRedirectPath: Function,
+            getElementKey: Function,
+          },
+          sms: {
+            getRoutePath: Function,
+            getRedirectPath: Function,
+            getElementKey: Function,
+          },
+          getRoutePath: Function,
+          getRedirectPath: Function,
+          getElementKey: Function,
+        },
+        getRoutePath: Function,
+        getRedirectPath: Function,
+        getElementKey: Function,
+      },
+      getRoutePath: Function,
+      getRedirectPath: Function,
+      getElementKey: Function,
     },
-    getRoutePath: [Function],
-    getRedirectPath: [Function],
-    getElementKey: [Function: getElementKey]
+    getRoutePath: Function,
+    getRedirectPath: Function,
+    getElementKey: Function,
   }
-}
-{
-  balances: {
-    getRoutePath: [Function],
-    getRedirectPath: [Function],
-    getElementKey: [Function: getElementKey]
-  },
-  security: {
-    '2fa': {
-      getRoutePath: [Function],
-      getRedirectPath: [Function],
-      getElementKey: [Function: getElementKey]
-    },
-    sms: {
-      getRoutePath: [Function],
-      getRedirectPath: [Function],
-      getElementKey: [Function: getElementKey]
-    },
-    getRoutePath: [Function],
-    getRedirectPath: [Function],
-    getElementKey: [Function: getElementKey]
-  },
-  getRoutePath: [Function],
-  getRedirectPath: [Function],
-  getElementKey: [Function: getElementKey]
 }
 ```
 </details>
 the constructed object of the route tree has three methods for each route
 
-1. `getRoutePath('' | { string, boolean })` - a function that returns a structured route, may take params and insert it like `.../:params...`
+1. `getRoutePath()` - a function that returns a string structured from your properties of the `rawTree` object. If in `rawTree` the value of the property is a function `getParam`, then `getRoutePath` will return the dynamic path for the route. [Example](###pass-created-resource-into-route)
 
-2. `getRedirectPath('' | { string })` - a function that structures the route and redirects it, may take arguments such as uuid, etc. Returns the path(`string`) structured from the properties of the route tree, whose values is the result of `getParam`, are replaced by the values of the properties of the object passed to `getRedirectPath`. This will work on parts of the route tree that were created with `getParam`. If you have several dynamic routes in a branch, then you can declare all of them with `getParam`, pass an object to it, and then at the end of the property chain call `getRedirectPath`, passing an object, the keys of which are dynamic routes and their properties are values of these routes.
+2. `getRedirectPath('' | { string })` - a function that structures the path for redirect, may take arguments such as uuid, etc. Returns the structured string from the properties of the route tree, whose values is the result of `getParam`, are replaced by the values of the properties of the object passed to `getRedirectPath`. This will work on parts of the route tree that were created with `getParam`. If you have several dynamic routes in a branch, then you can declare all of them with `getParam`, pass an object to it, and then at the end of the property chain call `getRedirectPath`, passing an object, the keys of which are dynamic routes and their properties are values of these routes. [Example](###pass-params-at)
 
-3. `getElementKey()` - return a last part of your resource from routes tree object.
+3. `getElementKey()` - return a last part of your resource from routes tree object. [Example](###pass-created-resource-into-route)
 
-`getParam(null | Object)` - returns the continuation of building the route tree after the parameter if the object is passed. The `getParam` replaces the property to which it is assigned with the parameter passed to it with `getRedirectPath`. If an object with routes is passed to the `getParam`, the property will still be replaced by the parameter passed to it with `getRedirectPath`, but the value of this property will be the routes passed to the `getParam`.
+`getParam(null | Object)` - the function is used to build a tree of routes where dynamic routes are present. `getParam` is assigned to the property(route) of the route tree object, after which this route becomes dynamic. This means that this property will be replaced by the route passed to the `getRedirectPath` function. [Example](###pass-params-at)
 ## Usage
 ### Create routes tree object
 ```typescript
@@ -126,18 +125,24 @@ import { routes } from './constants';
 ...
 
 <Route
-  path={routes.home.orders.opened.getRoutePath()} // returns path /home/orders/opened
+  key={routes.home.orders.opened.getElementKey()} // returns 'opened'
+  path={routes.home.orders.opened.getRoutePath()} // returns path '/home/orders/opened'
+  component={<RouteComponent />}
+/>
+// or with dynamic path
+<Route
+  path={routes.home.loans.uuid.getRoutePath()} // returns path '/home/loans/:uuid'
   component={<RouteComponent />}
 />
 ```
-### Pass params at 
+### Pass params at
 ```typescript
 import { routes } from './constants';
 
 ...
 
 // let's say user uuid is 123
-// based on this getRedirectPath will return the path /home/loans/123
+// based on this getRedirectPath will return the path '/home/loans/123'
 this.props.history.push(routes.home.loans.uuid.getRedirectPath({ uuid }));
 ```
 or you need to pass several parameters
@@ -149,14 +154,6 @@ import { routes } from './constants';
 // let's say user number is 123 and you need to return security by SMS
 // in this case, getRedirectPath should be called at the end of the chain
 // and pass the necessary arguments to the keys
-// based on this getRedirectPath will return the path /home/user/123/sms
+// based on this getRedirectPath will return the path '/home/user/123/sms'
 this.props.history.push(routes.home.user.uuid.security.getRedirectPath({ uuid: 123, security: 'sms' })));
-```
-### Get last resource
-```typescript
-import { routes } from './constants';
-
-...
-
-const resource = routes.home.orders.opened.getElementKey(); // returns 'opened'
 ```
