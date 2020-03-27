@@ -92,7 +92,7 @@ the constructed object of the route tree has three methods for each route
 ## Usage
 ### Create routes tree object
 ```typescript
-import buildRouteTree, { getParam } from 'buildRouteTree';
+import buildRouteTree, { getParam } from 'build-route-tree';
 
 const rawTree = {
   preview: null,              // null in this tree is a point, which means
