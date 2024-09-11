@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "dependencies": {
-    "path-to-regexp": "^2.4.0",
+    "path-to-regexp": "^3.3.0",
     "query-string": "^6.14.1"
   },
   "devDependencies": {
